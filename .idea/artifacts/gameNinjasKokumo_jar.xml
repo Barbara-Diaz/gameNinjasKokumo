@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="gameNinjasKokumo:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/gameNinjasKokumo_jar</output-path>
+    <root id="archive" name="gameNinjasKokumo.jar">
+      <element id="module-output" name="gameNinjasKokumo" />
+    </root>
+  </artifact>
+</component>
