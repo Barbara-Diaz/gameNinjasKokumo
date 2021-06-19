@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.conexion.Client;
+import com.company.conexion.Servidor;
 import com.company.game.Board;
 import com.company.game.UpDateBoard;
 import com.company.entity.Box;
@@ -17,14 +19,14 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-       final Player playerOne=new Player();
-       final Player playerTwo=new Player();
-       final List<Ninja> lis1=new ArrayList<>();
-       final Board board=new Board();
+        final Player playerOne=new Player();
+        final Player playerTwo=new Player();
+        final List<Ninja> lis1=new ArrayList<>();
+        final Board board=new Board();
         lis1.add(new Ninja(1,"  n  ",false));
         lis1.add(new Ninja(2,"  n  ",false));
         lis1.add(new Ninja(3,"  N  ",false));
-       final List<Ninja> lis2=new ArrayList<>();
+        final List<Ninja> lis2=new ArrayList<>();
         lis2.add(new Ninja(1,"  n  ",false));
         lis2.add(new Ninja(2,"  n  ",false));
         lis2.add(new Ninja(3,"  N  ",false));
@@ -40,8 +42,13 @@ public class Main {
         playerOne.setNinjas(lis1);
         playerTwo.setNinjas(lis2);
         Menu menu=new Menu();
+        Servidor servidor=new Servidor();
+        servidor.star();
+        Client client=new Client();
+        client.client();
+
         PositionNinjas positionNinjas=new PositionNinjas();
-      System.out.println("Para comenzar, por favor posicione los ninjas en el tablero indicando fila y columna");
+        System.out.println("Para comenzar, por favor posicione los ninjas en el tablero indicando fila y columna");
         for (int i=0;i< lis1.size();i++){
                positionNinjas.deployNinjas(boardPlayerOne, lis1.get(i));
                board.show(boardPlayerOne);
@@ -63,7 +70,6 @@ public class Main {
                        turn.turnNinja(lis1.get(i), boardPlayerOne, boardSecundaryPlayerOne, boardPlayerTwo, lis2,lis1);
 
                     }
-
                }
             }
 
@@ -74,11 +80,9 @@ public class Main {
                         turn.turnNinja(lis2.get(i), boardPlayerTwo, boardSecundaryPlayerTwo, boardPlayerOne, lis1,lis2);
 
                     }
-
                 }
            }
         }
-
         if(lis1.size()==0){
             System.out.println("GANADOR JUGADOR DOS!"); }
         if(lis2.size()==0){
